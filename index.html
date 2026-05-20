@@ -145,9 +145,7 @@ const UI_TEXT = {
     next: 'Next ≫',
     correct: 'Correct',
     incorrect: 'Incorrect. Correct answer: ',
-    source: 'Reference',
     maker: 'App created by',
-    sourceName: 'Japan Automobile Service Promotion Association',
     makerName: 'Kuriyama Jidousha Kogyo Co., Ltd.',
     trueLabel: 'True',
     falseLabel: 'False'
@@ -186,9 +184,7 @@ function applyLang(){
   if(badges[0]) badges[0].textContent = t('source');
   if(badges[1]) badges[1].textContent = t('maker');
   const footerDivs = document.querySelectorAll('.footer > div');
-  if(footerDivs[0]) footerDivs[0].lastChild.textContent = t('sourceName');
-  if(footerDivs[1]) footerDivs[1].lastChild.textContent = t('makerName');
-}
+ }
 
 let currentExam=null, order=[], current=0, userAnswers={}, showCorrect=false, graded=false;
 function initTop(){const grid=document.getElementById('examGrid');grid.innerHTML='';EXAMS.forEach((exam,idx)=>{const b=document.createElement('button');b.className='exam-btn';b.innerHTML=exam.title+'<span>'+exam.subtitle+'</span>';b.onclick=()=>startExam(idx);grid.appendChild(b);});}
