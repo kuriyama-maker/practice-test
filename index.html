@@ -1,133 +1,294 @@
 <!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>自動車整備 試験練習アプリ</title><style>
+:root{--green:#0b7d30;--green-soft:#eef8ec;--red:#d33a3a;--bg:#f7faf6;--line:#d9e7d7;--text:#102014;--muted:#647064;--shadow:0 4px 18px rgba(0,0,0,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}
+.header{background:#fff;border-top:6px solid var(--green);border-bottom:1px solid var(--line);padding:18px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;position:sticky;top:0;z-index:20}
+.logo{display:flex;align-items:center;gap:12px;font-size:25px;font-weight:900;color:var(--green)}
+.logo-icon{width:38px;height:38px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border-radius:8px;padding:12px 17px;border:1px solid #d5ddd5;background:#fff;color:var(--green);font-weight:900;cursor:pointer;font-size:15px}.btn-primary{background:var(--green);color:#fff;border-color:var(--green)}
+.container{max-width:1180px;margin:22px auto;padding:0 24px}.top,.card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.top{padding:28px}.top h1{margin:0 0 8px;color:var(--green);font-size:28px}.top p{color:#5f6b5f}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+.exam-btn{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:22px;font-size:19px;font-weight:900;color:var(--green);cursor:pointer}.exam-btn span{display:block;color:var(--muted);font-size:13px;margin-top:8px}
+.stats{background:var(--green-soft);border-radius:10px;padding:18px 26px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;font-size:18px;font-weight:900}.stats span{margin-left:12px;font-size:20px}
+.card{padding:24px 26px 32px;min-height:620px;overflow:visible}.q-head{display:flex;gap:22px;align-items:flex-start}.q-no{width:70px;height:70px;min-width:70px;background:linear-gradient(180deg,#15883a,#0b6f2c);border-radius:6px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}.q-title{font-size:27px;font-weight:900;line-height:1.5;padding-top:8px}.green-line{border-top:3px solid var(--green);margin:22px 0}
+.image-wrap{display:flex;align-items:center;justify-content:center;min-height:260px;padding:4px 0 22px;overflow:visible}.question-image{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain}
+.answers{display:grid;gap:18px;margin-top:12px}.answers.tf{grid-template-columns:1fr 1fr}.answers.mc3{grid-template-columns:repeat(3,1fr)}
+.answer{background:#fff;border:2px solid #d6ded6;border-radius:8px;min-height:82px;display:flex;align-items:center;justify-content:center;gap:18px;cursor:pointer;font-size:23px;font-weight:900}.answer .mark{font-size:34px}.answer .small{display:block;font-size:14px;color:#6d776d;margin-top:2px}
+.answer.selected-o,.answer.selected-1,.answer.selected-2,.answer.selected-3{border-color:var(--green);background:#f3fbf1}.answer.selected-x{border-color:var(--red);background:#fff7f7}.answer.correct-reveal{box-shadow:0 0 0 3px rgba(11,125,48,.18);border-color:var(--green)}
+.result{margin-top:18px;min-height:30px;font-size:19px;font-weight:900}.result.ok{color:var(--green)}.result.ng{color:var(--red)}
+.nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px}.nav .btn{padding:16px}.list{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:8px;margin-top:20px}.list button{padding:10px;border-radius:8px;border:1px solid var(--line);background:#fff;font-weight:900;cursor:pointer}.list button.done{background:#eaf8ee;border-color:#7fc993}
+.footer{margin-top:28px;border-top:1px solid var(--line);padding:22px 6px 30px;display:flex;gap:36px;flex-wrap:wrap;color:#333;align-items:center;font-size:14px}.badge{background:var(--green);color:#fff;border-radius:4px;padding:9px 12px;font-weight:900;margin-right:12px}.hidden{display:none!important}
+@media(max-width:780px){.header{align-items:flex-start;flex-direction:column;padding:14px}.logo{font-size:20px}.container{padding:0 12px;margin:14px auto}.stats{grid-template-columns:1fr;font-size:16px}.card{padding:16px 12px}.q-head{gap:12px}.q-no{width:54px;height:54px;min-width:54px;font-size:28px}.q-title{font-size:20px}.answers.tf,.answers.mc3{grid-template-columns:1fr;gap:12px}.nav{grid-template-columns:1fr}}
 
-<title>自動車整備 試験練習アプリ</title>
+/* image cut prevention v12 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
 
-<style>
-:root{
-  --green:#0b7d30;
-  --green-soft:#eef8ec;
-  --bg:#f7faf6;
-  --line:#d9e7d7;
-  --text:#102014;
-  --shadow:0 4px 18px rgba(0,0,0,.10)
+/* upper screenshot fixed v13 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+
+/* upper all screenshots fixed v14 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* tokutei2 fixed v15 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* beginner fixed v16 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* upper updated v17 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* upper updated v18 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* professional updated v19 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* professional updated v20 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
+.card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* specified1 updated v21 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;display:block!important}
+.card,.question-card{height:auto!important;max-height:none!important;overflow:visible!important}
+/* specified1 updated v22 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;display:block!important}
+.card,.question-card{height:auto!important;max-height:none!important;overflow:visible!important}
+
+/* specified2 updated v23 */
+.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
+.question-image{width:100%!important;height:auto!important;object-fit:contain!important;display:block!important}
+.card,.question-card{height:auto!important;max-height:none!important;overflow:visible!important}
+
+.translate-bar{
+position:sticky;top:0;z-index:999;
+background:#0f172a;color:white;
+padding:10px;display:flex;gap:10px;
+align-items:center;justify-content:center;
+font-weight:bold
+}
+.translate-btn{
+padding:8px 14px;border:none;border-radius:8px;
+cursor:pointer;font-weight:bold
 }
 
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif
-}
-
-.header{
-  background:#fff;
-  border-top:6px solid var(--green);
-  border-bottom:1px solid var(--line);
-  padding:18px 26px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:25px;
-  font-weight:900;
-  color:var(--green)
-}
-
-.logo-icon{
-  width:38px;
-  height:38px;
-  border-radius:8px;
-  background:var(--green);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center
-}
-
-.container{
-  max-width:1180px;
-  margin:22px auto;
-  padding:0 24px
-}
-
-.footer{
-  margin-top:28px;
-  border-top:1px solid var(--line);
-  padding:22px 6px 30px;
-  display:flex;
-  gap:36px;
-  flex-wrap:wrap;
-  color:#333;
-  align-items:center;
-  font-size:14px
-}
-
-.badge{
-  background:var(--green);
-  color:#fff;
-  border-radius:4px;
-  padding:9px 12px;
-  font-weight:900;
-  margin-right:12px
-}
-</style>
-</head>
-
+</style></head>
 <body>
 
-<header class="header">
 
-  <div class="logo">
-    <div class="logo-icon">🚗</div>
-    <div>自動車整備 試験練習アプリ</div>
-  </div>
 
-</header>
-
+<header class="header"><div class="logo"><div class="logo-icon">🚗</div><div id="headerTitle">自動車整備 試験練習アプリ</div></div>
+<div class="actions"><button class="btn" onclick="shuffleQuestions()">シャッフル</button><button class="btn" onclick="toggleAnswer()">正解表示 <span id="answerToggle">OFF</span></button><button class="btn btn-primary" onclick="gradeAll()">採点する</button><button class="btn" onclick="toggleLang()">English</button><button class="btn" onclick="backTop()">TOP</button></div></header>
 <main class="container">
-
-  <h1>試験を選択</h1>
-  <p>
-    問題を読んで回答できます。採点・正解表示・問題シャッフルに対応しています。
-  </p>
-
-  <!-- コンテンツ -->
-
-  <footer class="footer">
-
-    <div>
-
-      <span class="badge">maid</span>
-
-      <a href="https://www.kuriyama-truck.com/"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           color:#0b7d30;
-           font-weight:700;
-           text-decoration:none;
-         ">
-
-        栗山自動車工業株式会社
-
-      </a>
-
-    </div>
-
-  </footer>
-
+<section id="top" class="top"><h1>試験を選択</h1><p>問題を読んで回答できます。採点・正解表示・問題シャッフルに対応しています。</p><div class="exam-grid" id="examGrid"></div></section>
+<section id="app" class="hidden"><div class="stats"><div>問題 <span id="progress">1 / 20</span></div><div>回答済み <span id="answered">0 / 20</span></div><div>正解数 <span id="score">-</span></div></div>
+<article class="card"><div class="q-head"><div class="q-no" id="qNo">1</div><div class="q-title">問題を読んで正しい答えを選択してください。</div></div><div class="green-line"></div><div class="image-wrap"><img class="question-image" id="qImage" alt="問題画像"></div><div class="answers" id="answers"></div><div class="result" id="result"></div></article>
+<div class="nav"><button class="btn" onclick="prevQuestion()">≪ 前の問題</button><button class="btn" onclick="toggleList()">一覧に戻る</button><button class="btn btn-primary" onclick="nextQuestion()">次の問題 ≫</button></div><div id="list" class="list hidden"></div></section>
+<footer class="footer"><div><span class="badge">参考出典</span>一般社団法人 日本自動車整備振興会連合会</div><div><span class="badge">アプリ作成</span>栗山自動車工業株式会社</div></footer>
 </main>
+<script>
+const EXAMS = [{"id":"beginner","title":"技能実習 自動車整備 初級学科試験","subtitle":"正誤形式・全20問","answerType":"tf","options":[{"value":"○","label":"○　ただしい","sub":"Tadashii"},{"value":"×","label":"×　あやまり","sub":"Ayamari"}],"questions":[{"no":1,"image":"assets/beginner_q01.webp","answer":"○"},{"no":2,"image":"assets/beginner_q02.webp","answer":"×"},{"no":3,"image":"assets/beginner_q03.webp","answer":"○"},{"no":4,"image":"assets/beginner_q04.webp","answer":"○"},{"no":5,"image":"assets/beginner_q05.webp","answer":"○"},{"no":6,"image":"assets/beginner_q06.webp","answer":"○"},{"no":7,"image":"assets/beginner_q07.webp","answer":"○"},{"no":8,"image":"assets/beginner_q08.webp","answer":"○"},{"no":9,"image":"assets/beginner_q09.webp","answer":"×"},{"no":10,"image":"assets/beginner_q10.webp","answer":"×"},{"no":11,"image":"assets/beginner_q11.webp","answer":"×"},{"no":12,"image":"assets/beginner_q12.webp","answer":"×"},{"no":13,"image":"assets/beginner_q13.webp","answer":"×"},{"no":14,"image":"assets/beginner_q14.webp","answer":"×"},{"no":15,"image":"assets/beginner_q15.webp","answer":"○"},{"no":16,"image":"assets/beginner_q16.webp","answer":"○"},{"no":17,"image":"assets/beginner_q17.webp","answer":"×"},{"no":18,"image":"assets/beginner_q18.webp","answer":"×"},{"no":19,"image":"assets/beginner_q19.webp","answer":"○"},{"no":20,"image":"assets/beginner_q20.webp","answer":"○"}]},{"id":"professional","title":"技能実習 自動車整備 専門級学科試験","subtitle":"正誤形式・全30問","answerType":"tf","options":[{"value":"○","label":"ただしい","sub":"Tadashii"},{"value":"×","label":"あやまり","sub":"Ayamari"}],"questions":[{"no":1,"image":"assets/professional_q01.webp","answer":"○"},{"no":2,"image":"assets/professional_q02.webp","answer":"○"},{"no":3,"image":"assets/professional_q03.webp","answer":"○"},{"no":4,"image":"assets/professional_q04.webp","answer":"○"},{"no":5,"image":"assets/professional_q05.webp","answer":"○"},{"no":6,"image":"assets/professional_q06.webp","answer":"×"},{"no":7,"image":"assets/professional_q07.webp","answer":"×"},{"no":8,"image":"assets/professional_q08.webp","answer":"×"},{"no":9,"image":"assets/professional_q09.webp","answer":"○"},{"no":10,"image":"assets/professional_q10.webp","answer":"○"},{"no":11,"image":"assets/professional_q11.webp","answer":"×"},{"no":12,"image":"assets/professional_q12.webp","answer":"○"},{"no":13,"image":"assets/professional_q13.webp","answer":"○"},{"no":14,"image":"assets/professional_q14.webp","answer":"○"},{"no":15,"image":"assets/professional_q15.webp","answer":"○"},{"no":16,"image":"assets/professional_q16.webp","answer":"×"},{"no":17,"image":"assets/professional_q17.webp","answer":"○"},{"no":18,"image":"assets/professional_q18.webp","answer":"○"},{"no":19,"image":"assets/professional_q19.webp","answer":"○"},{"no":20,"image":"assets/professional_q20.webp","answer":"○"},{"no":21,"image":"assets/professional_q21.webp","answer":"○"},{"no":22,"image":"assets/professional_q22.webp","answer":"×"},{"no":23,"image":"assets/professional_q23.webp","answer":"○"},{"no":24,"image":"assets/professional_q24.webp","answer":"○"},{"no":25,"image":"assets/professional_q25.webp","answer":"○"},{"no":26,"image":"assets/professional_q26.webp","answer":"×"},{"no":27,"image":"assets/professional_q27.webp","answer":"×"},{"no":28,"image":"assets/professional_q28.webp","answer":"○"},{"no":29,"image":"assets/professional_q29.webp","answer":"○"},{"no":30,"image":"assets/professional_q30.webp","answer":"○"}]},{"id":"upper","title":"技能実習 自動車整備 上級学科試験","subtitle":"三択形式・全40問","answerType":"mc3","options":[{"value":"1","label":"1","sub":""},{"value":"2","label":"2","sub":""},{"value":"3","label":"3","sub":""}],"questions":[{"no":1,"image":"assets/upper_q01.webp","answer":"1"},{"no":2,"image":"assets/upper_q02.webp","answer":"3"},{"no":3,"image":"assets/upper_q03.webp","answer":"2"},{"no":4,"image":"assets/upper_q04.webp","answer":"1"},{"no":5,"image":"assets/upper_q05.webp","answer":"1"},{"no":6,"image":"assets/upper_q06.webp","answer":"1"},{"no":7,"image":"assets/upper_q07.webp","answer":"3"},{"no":8,"image":"assets/upper_q08.webp","answer":"3"},{"no":9,"image":"assets/upper_q09.webp","answer":"2"},{"no":10,"image":"assets/upper_q10.webp","answer":"3"},{"no":11,"image":"assets/upper_q11.webp","answer":"1"},{"no":12,"image":"assets/upper_q12.webp","answer":"2"},{"no":13,"image":"assets/upper_q13.webp","answer":"3"},{"no":14,"image":"assets/upper_q14.webp","answer":"3"},{"no":15,"image":"assets/upper_q15.webp","answer":"1"},{"no":16,"image":"assets/upper_q16.webp","answer":"2"},{"no":17,"image":"assets/upper_q17.webp","answer":"2"},{"no":18,"image":"assets/upper_q18.webp","answer":"3"},{"no":19,"image":"assets/upper_q19.webp","answer":"1"},{"no":20,"image":"assets/upper_q20.webp","answer":"1"},{"no":21,"image":"assets/upper_q21.webp","answer":"1"},{"no":22,"image":"assets/upper_q22.webp","answer":"1"},{"no":23,"image":"assets/upper_q23.webp","answer":"2"},{"no":24,"image":"assets/upper_q24.webp","answer":"1"},{"no":25,"image":"assets/upper_q25.webp","answer":"2"},{"no":26,"image":"assets/upper_q26.webp","answer":"1"},{"no":27,"image":"assets/upper_q27.webp","answer":"2"},{"no":28,"image":"assets/upper_q28.webp","answer":"3"},{"no":29,"image":"assets/upper_q29.webp","answer":"3"},{"no":30,"image":"assets/upper_q30.webp","answer":"2"},{"no":31,"image":"assets/upper_q31.webp","answer":"1"},{"no":32,"image":"assets/upper_q32.webp","answer":"1"},{"no":33,"image":"assets/upper_q33.webp","answer":"1"},{"no":34,"image":"assets/upper_q34.webp","answer":"1"},{"no":35,"image":"assets/upper_q35.webp","answer":"2"},{"no":36,"image":"assets/upper_q36.webp","answer":"3"},{"no":37,"image":"assets/upper_q37.webp","answer":"3"},{"no":38,"image":"assets/upper_q38.webp","answer":"2"},{"no":39,"image":"assets/upper_q39.webp","answer":"3"},{"no":40,"image":"assets/upper_q40.webp","answer":"2"}]},{"id":"specified1","title":"特定技能試験1号 自動車整備 学科試験","subtitle":"正誤形式・全30問","answerType":"tf","options":[{"value":"○","label":"ただしい","sub":"Tadashii"},{"value":"×","label":"あやまり","sub":"Ayamari"}],"questions":[{"no":1,"image":"assets/specified1_q01.webp","answer":"○"},{"no":2,"image":"assets/specified1_q02.webp","answer":"○"},{"no":3,"image":"assets/specified1_q03.webp","answer":"×"},{"no":4,"image":"assets/specified1_q04.webp","answer":"○"},{"no":5,"image":"assets/specified1_q05.webp","answer":"○"},{"no":6,"image":"assets/specified1_q06.webp","answer":"×"},{"no":7,"image":"assets/specified1_q07.webp","answer":"○"},{"no":8,"image":"assets/specified1_q08.webp","answer":"○"},{"no":9,"image":"assets/specified1_q09.webp","answer":"×"},{"no":10,"image":"assets/specified1_q10.webp","answer":"○"},{"no":11,"image":"assets/specified1_q11.webp","answer":"×"},{"no":12,"image":"assets/specified1_q12.webp","answer":"○"},{"no":13,"image":"assets/specified1_q13.webp","answer":"×"},{"no":14,"image":"assets/specified1_q14.webp","answer":"○"},{"no":15,"image":"assets/specified1_q15.webp","answer":"×"},{"no":16,"image":"assets/specified1_q16.webp","answer":"○"},{"no":17,"image":"assets/specified1_q17.webp","answer":"○"},{"no":18,"image":"assets/specified1_q18.webp","answer":"○"},{"no":19,"image":"assets/specified1_q19.webp","answer":"○"},{"no":20,"image":"assets/specified1_q20.webp","answer":"×"},{"no":21,"image":"assets/specified1_q21.webp","answer":"○"},{"no":22,"image":"assets/specified1_q22.webp","answer":"○"},{"no":23,"image":"assets/specified1_q23.webp","answer":"○"},{"no":24,"image":"assets/specified1_q24.webp","answer":"○"},{"no":25,"image":"assets/specified1_q25.webp","answer":"×"},{"no":26,"image":"assets/specified1_q26.webp","answer":"○"},{"no":27,"image":"assets/specified1_q27.webp","answer":"○"},{"no":28,"image":"assets/specified1_q28.webp","answer":"×"},{"no":29,"image":"assets/specified1_q29.webp","answer":"○"},{"no":30,"image":"assets/specified1_q30.webp","answer":"○"}]},{"id":"tokutei2","title":"特定技能2号 自動車整備 学科試験","subtitle":"4択形式・全40問","answerType":"mc4","options":[{"value":"1","label":"1","sub":""},{"value":"2","label":"2","sub":""},{"value":"3","label":"3","sub":""},{"value":"4","label":"4","sub":""}],"questions":[{"no":1,"image":"assets/tokutei2_q01.webp","answer":"3"},{"no":2,"image":"assets/tokutei2_q02.webp","answer":"1"},{"no":3,"image":"assets/tokutei2_q03.webp","answer":"2"},{"no":4,"image":"assets/tokutei2_q04.webp","answer":"4"},{"no":5,"image":"assets/tokutei2_q05.webp","answer":"2"},{"no":6,"image":"assets/tokutei2_q06.webp","answer":"1"},{"no":7,"image":"assets/tokutei2_q07.webp","answer":"4"},{"no":8,"image":"assets/tokutei2_q08.webp","answer":"2"},{"no":9,"image":"assets/tokutei2_q09.webp","answer":"3"},{"no":10,"image":"assets/tokutei2_q10.webp","answer":"3"},{"no":11,"image":"assets/tokutei2_q11.webp","answer":"4"},{"no":12,"image":"assets/tokutei2_q12.webp","answer":"1"},{"no":13,"image":"assets/tokutei2_q13.webp","answer":"4"},{"no":14,"image":"assets/tokutei2_q14.webp","answer":"2"},{"no":15,"image":"assets/tokutei2_q15.webp","answer":"4"},{"no":16,"image":"assets/tokutei2_q16.webp","answer":"1"},{"no":17,"image":"assets/tokutei2_q17.webp","answer":"3"},{"no":18,"image":"assets/tokutei2_q18.webp","answer":"4"},{"no":19,"image":"assets/tokutei2_q19.webp","answer":"2"},{"no":20,"image":"assets/tokutei2_q20.webp","answer":"2"},{"no":21,"image":"assets/tokutei2_q21.webp","answer":"1"},{"no":22,"image":"assets/tokutei2_q22.webp","answer":"2"},{"no":23,"image":"assets/tokutei2_q23.webp","answer":"4"},{"no":24,"image":"assets/tokutei2_q24.webp","answer":"2"},{"no":25,"image":"assets/tokutei2_q25.webp","answer":"2"},{"no":26,"image":"assets/tokutei2_q26.webp","answer":"1"},{"no":27,"image":"assets/tokutei2_q27.webp","answer":"3"},{"no":28,"image":"assets/tokutei2_q28.webp","answer":"4"},{"no":29,"image":"assets/tokutei2_q29.webp","answer":"2"},{"no":30,"image":"assets/tokutei2_q30.webp","answer":"4"},{"no":31,"image":"assets/tokutei2_q31.webp","answer":"3"},{"no":32,"image":"assets/tokutei2_q32.webp","answer":"3"},{"no":33,"image":"assets/tokutei2_q33.webp","answer":"1"},{"no":34,"image":"assets/tokutei2_q34.webp","answer":"2"},{"no":35,"image":"assets/tokutei2_q35.webp","answer":"2"},{"no":36,"image":"assets/tokutei2_q36.webp","answer":"3"},{"no":37,"image":"assets/tokutei2_q37.webp","answer":"2"},{"no":38,"image":"assets/tokutei2_q38.webp","answer":"2"},{"no":39,"image":"assets/tokutei2_q39.webp","answer":"1"},{"no":40,"image":"assets/tokutei2_q40.webp","answer":"3"}]}];
 
-</body>
-</html>
+let uiLang = 'ja';
+const UI_TEXT = {
+  ja: {
+    header: '自動車整備 試験練習アプリ',
+    selectExam: '試験を選択',
+    topDesc: '問題を読んで回答できます。採点・正解表示・問題シャッフルに対応しています。',
+    instruction: '問題を読んで正しい答えを選択してください。',
+    shuffle: 'シャッフル',
+    showAnswer: '正解表示',
+    grade: '採点する',
+    top: 'TOP',
+    problem: '問題',
+    answered: '回答済み',
+    score: '正解数',
+    prev: '≪ 前の問題',
+    list: '一覧に戻る',
+    next: '次の問題 ≫',
+    correct: '正解です',
+    incorrect: '不正解です（正解：',
+    source: '参考出典',
+    maker: 'アプリ作成',
+    sourceName: '一般社団法人 日本自動車整備振興会連合会',
+    makerName: '栗山自動車工業株式会社',
+    trueLabel: 'ただしい',
+    falseLabel: 'あやまり'
+  },
+  en: {
+    header: 'Automotive Maintenance Exam Practice App',
+    selectExam: 'Select an exam',
+    topDesc: 'Read each question and choose the correct answer. Grading, answer display, and shuffle are supported.',
+    instruction: 'Read the question and choose the correct answer.',
+    shuffle: 'Shuffle',
+    showAnswer: 'Show Answer',
+    grade: 'Grade',
+    top: 'TOP',
+    problem: 'Question',
+    answered: 'Answered',
+    score: 'Score',
+    prev: '≪ Previous',
+    list: 'Question List',
+    next: 'Next ≫',
+    correct: 'Correct',
+    incorrect: 'Incorrect. Correct answer: ',
+    source: 'Reference',
+    maker: 'App created by',
+    sourceName: 'Japan Automobile Service Promotion Association',
+    makerName: 'Kuriyama Jidousha Kogyo Co., Ltd.',
+    trueLabel: 'True',
+    falseLabel: 'False'
+  }
+};
+function t(key){ return UI_TEXT[uiLang][key] || key; }
+function toggleLang(){
+  uiLang = uiLang === 'ja' ? 'en' : 'ja';
+  applyLang();
+  if(currentExam) render();
+}
+function applyLang(){
+  const h1 = document.querySelector('#top h1');
+  if(h1) h1.textContent = t('selectExam');
+  const p = document.querySelector('#top p');
+  if(p) p.textContent = t('topDesc');
+  const title = document.getElementById('headerTitle');
+  if(title && !currentExam) title.textContent = t('header');
+  const qTitle = document.querySelector('.q-title');
+  if(qTitle) qTitle.textContent = t('instruction');
+  const actionButtons = document.querySelectorAll('.actions .btn');
+  if(actionButtons[0]) actionButtons[0].childNodes[0].textContent = t('shuffle');
+  if(actionButtons[1]) actionButtons[1].childNodes[0].textContent = t('showAnswer') + ' ';
+  if(actionButtons[2]) actionButtons[2].textContent = t('grade');
+  if(actionButtons[3]) actionButtons[3].textContent = uiLang === 'ja' ? 'English' : '日本語';
+  if(actionButtons[4]) actionButtons[4].textContent = t('top');
+  const statDivs = document.querySelectorAll('.stats > div');
+  if(statDivs[0] && document.getElementById('progress')) statDivs[0].firstChild.textContent = t('problem') + ' ';
+  if(statDivs[1] && document.getElementById('answered')) statDivs[1].firstChild.textContent = t('answered') + ' ';
+  if(statDivs[2] && document.getElementById('score')) statDivs[2].firstChild.textContent = t('score') + ' ';
+  const navBtns = document.querySelectorAll('.nav .btn');
+  if(navBtns[0]) navBtns[0].textContent = t('prev');
+  if(navBtns[1]) navBtns[1].textContent = t('list');
+  if(navBtns[2]) navBtns[2].textContent = t('next');
+  const badges = document.querySelectorAll('.footer .badge');
+  if(badges[0]) badges[0].textContent = t('source');
+  if(badges[1]) badges[1].textContent = t('maker');
+  const footerDivs = document.querySelectorAll('.footer > div');
+  if(footerDivs[0]) footerDivs[0].lastChild.textContent = t('sourceName');
+  if(footerDivs[1]) footerDivs[1].lastChild.textContent = t('makerName');
+}
+
+let currentExam=null, order=[], current=0, userAnswers={}, showCorrect=false, graded=false;
+function initTop(){const grid=document.getElementById('examGrid');grid.innerHTML='';EXAMS.forEach((exam,idx)=>{const b=document.createElement('button');b.className='exam-btn';b.innerHTML=exam.title+'<span>'+exam.subtitle+'</span>';b.onclick=()=>startExam(idx);grid.appendChild(b);});}
+function startExam(idx){currentExam=EXAMS[idx];order=currentExam.questions.map(q=>q.no);current=0;userAnswers={};showCorrect=false;graded=false;document.getElementById('answerToggle').textContent='OFF';document.getElementById('headerTitle').textContent=currentExam.title+' 練習アプリ';document.getElementById('top').classList.add('hidden');document.getElementById('app').classList.remove('hidden');render();}
+function backTop(){document.getElementById('app').classList.add('hidden');document.getElementById('top').classList.remove('hidden');document.getElementById('headerTitle').textContent=t('header');applyLang();}
+function getQ(){return currentExam.questions.find(q=>q.no===order[current]);}
+function render(){if(!currentExam)return;const q=getQ();document.getElementById('qNo').textContent=q.no;document.getElementById('qImage').src=q.image;document.getElementById('progress').textContent=(current+1)+' / '+currentExam.questions.length;const selected=userAnswers[q.no]||'';const box=document.getElementById('answers');box.className='answers '+currentExam.answerType;box.innerHTML='';currentExam.options.forEach(opt=>{const b=document.createElement('button');b.className='answer';if(selected===opt.value)b.classList.add(opt.value==='×'?'selected-x':(opt.value==='○'?'selected-o':'selected-'+opt.value));if((showCorrect||graded)&&q.answer&&q.answer===opt.value)b.classList.add('correct-reveal');const mark=opt.value==='○'?'○':(opt.value==='×'?'×':opt.value);
+if(currentExam.answerType==='mc3'||currentExam.answerType==='mc4'){
+  b.innerHTML='<span class="mark">'+mark+'</span>';
+}else{
+  let labelText = opt.label;
+let subText = opt.sub || '';
+if(currentExam.answerType==='tf'){
+  if(opt.value==='○'){ labelText = t('trueLabel'); subText = uiLang==='ja' ? 'Tadashii' : 'True'; }
+  if(opt.value==='×'){ labelText = t('falseLabel'); subText = uiLang==='ja' ? 'Ayamari' : 'False'; }
+}
+b.innerHTML='<span class="mark">'+mark+'</span><span>'+labelText+(subText?'<span class="small">'+subText+'</span>':'')+'</span>';
+}
+b.onclick=()=>selectAnswer(opt.value);box.appendChild(b);});const r=document.getElementById('result');r.textContent='';r.className='result';if((showCorrect||graded)&&!q.answer){r.textContent=(uiLang==='ja'?'この問題は正解未登録です':'Answer is not registered for this question.');}else if(showCorrect&&!graded&&q.answer){r.textContent=(uiLang==='ja'?'正解：':'Answer: ')+q.answer;}else if(graded&&selected&&q.answer){if(selected===q.answer){r.textContent=t('correct');r.className='result ok';}else{r.textContent=t('incorrect')+q.answer;r.className='result ng';}}updateStats();renderList();}
+function selectAnswer(ans){userAnswers[getQ().no]=ans;graded=false;render();}
+function updateStats(){const answered=Object.keys(userAnswers).length;let correct=0,registered=0;currentExam.questions.forEach(q=>{if(q.answer)registered++;if(q.answer&&userAnswers[q.no]===q.answer)correct++;});document.getElementById('answered').textContent=answered+' / '+currentExam.questions.length;document.getElementById('score').textContent=graded?(correct+' / '+registered):'-';}
+function nextQuestion(){if(current<order.length-1)current++;render();window.scrollTo({top:0,behavior:'smooth'});}
+function prevQuestion(){if(current>0)current--;render();window.scrollTo({top:0,behavior:'smooth'});}
+function gradeAll(){graded=true;showCorrect=true;document.getElementById('answerToggle').textContent='ON';render();}
+function toggleAnswer(){showCorrect=!showCorrect;document.getElementById('answerToggle').textContent=showCorrect?'ON':'OFF';render();}
+function shuffleQuestions(){if(!currentExam)return;for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}current=0;graded=false;render();}
+function toggleList(){document.getElementById('list').classList.toggle('hidden');}
+function renderList(){const list=document.getElementById('list');list.innerHTML='';order.forEach((no,idx)=>{const b=document.createElement('button');b.textContent='No.'+no;if(userAnswers[no])b.classList.add('done');b.onclick=()=>{current=idx;render();window.scrollTo({top:0,behavior:'smooth'});};list.appendChild(b);});}
+initTop();applyLang();
+</script>
+<script>
+function setLang(lang){
+document.documentElement.lang = lang;
+
+if(lang==='id'){
+const nodes = document.querySelectorAll('h1,h2,h3,p,button,span,label,div');
+nodes.forEach(n=>{
+ if(!n.dataset.jp){ n.dataset.jp = n.innerText; }
+});
+
+const dict = {
+"問題":"Soal",
+"回答":"Jawaban",
+"次へ":"Berikutnya",
+"前へ":"Sebelumnya",
+"結果":"Hasil",
+"正解":"Benar",
+"不正解":"Salah",
+"解説":"Penjelasan",
+"開始":"Mulai",
+"終了":"Selesai",
+"試験":"Ujian",
+"点数":"Nilai",
+"学習":"Belajar",
+"選択":"Pilih",
+"戻る":"Kembali",
+"日本語":"Bahasa Jepang",
+"Indonesia":"Bahasa Indonesia"
+};
+
+document.querySelectorAll('*').forEach(el=>{
+ if(el.children.length===0){
+   let t = el.dataset.jp || el.innerText;
+   Object.keys(dict).forEach(k=>{
+      t = t.replaceAll(k, dict[k]);
+   });
+   el.innerText = t;
+ }
+});
+}else{
+location.reload();
+}
+}
+</script>
+
+
+
+
+<div style="
+margin-top:40px;
+padding:20px;
+text-align:center;
+font-size:14px;
+line-height:2;
+border-top:1px solid #ddd;
+background:#f8f8f8;
+">
+<div>
+<a href="https://www.jaspa.or.jp/" target="_blank" rel="noopener noreferrer">
+一般社団法人日本自動車整備振興会連合会
+</a>
+</div>
+
+<div>
+<a href="https://www.kuriyama-truck.com/" target="_blank" rel="noopener noreferrer">
+栗山自動車工業株式会社
+</a>
+</div>
+</div>
+
+</body></html>
