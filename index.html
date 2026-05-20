@@ -1,366 +1,133 @@
-ChatGPT
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Invite team members
-ブログ記事の作成
-
-栗山自動車で働く技能実習生と特定技能の為に
-
-技能実習　自動車整備　初級、専門級、上級試験
-特定技能試験１号、２号
-
-の練習問題アプリを作成した。
-
-機能は
-・正解ON/OFF機能
-・採点機能
-・問題シャッフル機能
-
-プログラムの作成はAIを活用して作成しgithubにて公開と、考えてから公開まで数十分で作れてしまった
-
-他の会社の方も利用出来るようにアクセスに制限は設けてないのでご活用して頂ければと思います
-※問題の正誤については念の為確認してからお使いください！
-
-
-Thought for a couple of seconds
-以下、ブログ記事案です。
-
-AIを活用して、外国人材向けの自動車整備試験練習アプリを作成しました
-栗山自動車で働く技能実習生・特定技能の皆さんの学習支援を目的に、自動車整備に関する試験対策用の練習問題アプリを作成しました。
-
-対象としている試験は、以下の内容です。
-
-技能実習 自動車整備 初級・専門級・上級試験
-
-特定技能 自動車整備 1号・2号試験
-
-アプリには、学習しやすいように以下の機能を搭載しています。
-
-正解表示のON/OFF機能
-
-採点機能
-
-問題シャッフル機能
-
-今回のアプリ開発では、プログラム作成にAIを活用しました。
-構想から作成、GitHubでの公開まで、数十分ほどで形にすることができ、AIを使うことで「必要だと思ったものをすぐに作れる」時代になっていることを実感しました。
-
-また、このアプリは栗山自動車の社内利用だけでなく、他社の方にもご活用いただけるよう、アクセス制限は設けていません。
-
-技能実習生や特定技能で自動車整備を学ぶ方々の試験対策に、少しでも役立てていただければ幸いです。
-
-なお、問題の正誤については念のため確認のうえ、ご利用ください。
-
-
-
-Pasted text(1).txt
-Document
-フッターの栗山自動車工業株式会社を削除して、maidの横にある栗山自動車工業株式会社にhttps://www.kuriyama-truck.com/のリンクを追加してください。　リンクは別タブで開くようにしてください。
-
-2026y05m20d_143437340.jpg
-一番下の栗山自動車工業株式会社のテキストリンクを削除
-その上のmaidの横の栗山自動車工業株式会社にhttps://www.kuriyama-truck.com/のリンクを追加してください。　リンクは別タブで開くようにしてください。
-
-
-Image created
-•
-Automotive exam practice interface
-
-
-Image created
-•
-Minimal green accent web footer
-
-
-Automotive exam practice interface
-
-Generated image: Automotive exam practice interface
-
-
-Edit
-
-
-
-Minimal green accent web footer
-
-Generated image: Minimal green accent web footer
-
-
-Edit
-
-
-
-Pasted text(2).txt
-Document
-maidの横にある栗山自動車工業株式会社にhttps://www.kuriyama-truck.com/のリンクを追加してください。　リンクは別タブで開くようにしてください。
-
-フッターにある栗山自動車工業株式会社のテキストリンクは削除してください。
-
-以下の2か所を修正してください。 
-
-
-まず、この部分：
-
-<footer class="footer">
-  <div>
-    <span class="badge">アプリ作成</span>
-    栗山自動車工業株式会社
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>自動車整備 試験練習アプリ</title>
+
+<style>
+:root{
+  --green:#0b7d30;
+  --green-soft:#eef8ec;
+  --bg:#f7faf6;
+  --line:#d9e7d7;
+  --text:#102014;
+  --shadow:0 4px 18px rgba(0,0,0,.10)
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",Meiryo,sans-serif
+}
+
+.header{
+  background:#fff;
+  border-top:6px solid var(--green);
+  border-bottom:1px solid var(--line);
+  padding:18px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:25px;
+  font-weight:900;
+  color:var(--green)
+}
+
+.logo-icon{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background:var(--green);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.container{
+  max-width:1180px;
+  margin:22px auto;
+  padding:0 24px
+}
+
+.footer{
+  margin-top:28px;
+  border-top:1px solid var(--line);
+  padding:22px 6px 30px;
+  display:flex;
+  gap:36px;
+  flex-wrap:wrap;
+  color:#333;
+  align-items:center;
+  font-size:14px
+}
+
+.badge{
+  background:var(--green);
+  color:#fff;
+  border-radius:4px;
+  padding:9px 12px;
+  font-weight:900;
+  margin-right:12px
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    <div class="logo-icon">🚗</div>
+    <div>自動車整備 試験練習アプリ</div>
   </div>
-</footer>
-を、以下に変更します。
 
-<footer class="footer">
-  <div>
-    <span class="badge">maid</span>
+</header>
 
-    <a href="https://www.kuriyama-truck.com/"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="color:#0b7d30;font-weight:700;text-decoration:none;">
-      栗山自動車工業株式会社
-    </a>
+<main class="container">
 
-  </div>
-</footer>
-次に、一番下に追加されているこの部分を丸ごと削除してください。
+  <h1>試験を選択</h1>
+  <p>
+    問題を読んで回答できます。採点・正解表示・問題シャッフルに対応しています。
+  </p>
 
-<div style="
-margin-top:40px;
-padding:20px;
-text-align:center;
-font-size:14px;
-line-height:2;
-border-top:1px solid #ddd;
-background:#f8f8f8;
-">
-<div>
-<a href="https://www.kuriyama-truck.com/" target="_blank" rel="noopener noreferrer">
-栗山自動車工業株式会社
-</a>
-</div>
-</div>
-これで、
+  <!-- コンテンツ -->
 
-フッター下部の単独リンクは消える
+  <footer class="footer">
 
-maid 横の「栗山自動車工業株式会社」がリンク化
+    <div>
 
-別タブで開く
+      <span class="badge">maid</span>
 
-状態になります。
+      <a href="https://www.kuriyama-truck.com/"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="
+           color:#0b7d30;
+           font-weight:700;
+           text-decoration:none;
+         ">
 
+        栗山自動車工業株式会社
 
-Sources
+      </a>
 
-TXT
-Pasted text.txt
-/* image cut prevention v12 */
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
+    </div>
 
-/* upper screenshot fixed v13 */
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
+  </footer>
 
-/* upper all screenshots fixed v14 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ tokutei2 fixed v15 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ beginner fixed v16 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ upper updated v17 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ upper updated v18 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ professional updated v19 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ professional updated v20 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important}
-.card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ specified1 updated v21 /
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;display:block!important}
-.card,.question-card{height:auto!important;max-height:none!important;overflow:visible!important}
-/ specified1 updated v22 */
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;display:block!important}
-.card,.question-card{height:auto!important;max-height:none!important;overflow:visible!important}
+</main>
 
-/* specified2 updated v23 */
-.image-wrap{height:auto!important;max-height:none!important;overflow:visible!important}
-.question-image{width:100%!important;height:auto!important;object-fit:contain!important;display:block!important}
-.card,.question-card{height:auto!important;max-height:none!important;overflow:visible!important}
-
-.translate-bar{
-position:sticky;top:0;z-index:999;
-background:#0f172a;color:white;
-padding:10px;display:flex;gap:10px;
-align-items:center;justify-content:center;
-font-weight:bold
-}
-.translate-btn{
-padding:8px 14px;border:none;border-radius:8px;
-cursor:pointer;font-weight:bold
-}
-
-
-
-
-
-let uiLang = 'ja';
-const UI_TEXT = {
-ja: {
-header: '自動車整備 試験練習アプリ',
-selectExam: '試験を選択',
-topDesc: '問題を読んで回答できます。採点・正解表示・問題シャッフルに対応しています。',
-instruction: '問題を読んで正しい答えを選択してください。',
-shuffle: 'シャッフル',
-showAnswer: '正解表示',
-grade: '採点する',
-top: 'TOP',
-problem: '問題',
-answered: '回答済み',
-score: '正解数',
-prev: '≪ 前の問題',
-list: '一覧に戻る',
-next: '次の問題 ≫',
-correct: '正解です',
-incorrect: '不正解です（正解：',
-maker: 'アプリ作成',
-makerName: '栗山自動車工業株式会社',
-trueLabel: 'ただしい',
-falseLabel: 'あやまり'
-},
-en: {
-header: 'Automotive Maintenance Exam Practice App',
-selectExam: 'Select an exam',
-topDesc: 'Read each question and choose the correct answer. Grading, answer display, and shuffle are supported.',
-instruction: 'Read the question and choose the correct answer.',
-shuffle: 'Shuffle',
-showAnswer: 'Show Answer',
-grade: 'Grade',
-top: 'TOP',
-problem: 'Question',
-answered: 'Answered',
-score: 'Score',
-prev: '≪ Previous',
-list: 'Question List',
-next: 'Next ≫',
-correct: 'Correct',
-incorrect: 'Incorrect. Correct answer: ',
-maker: 'App created by',
-makerName: 'Kuriyama Jidousha Kogyo Co., Ltd.',
-trueLabel: 'True',
-falseLabel: 'False'
-}
-};
-function t(key){ return UI_TEXT[uiLang][key] || key; }
-function toggleLang(){
-uiLang = uiLang === 'ja' ? 'en' : 'ja';
-applyLang();
-if(currentExam) render();
-}
-function applyLang(){
-const h1 = document.querySelector('#top h1');
-if(h1) h1.textContent = t('selectExam');
-const p = document.querySelector('#top p');
-if(p) p.textContent = t('topDesc');
-const title = document.getElementById('headerTitle');
-if(title && !currentExam) title.textContent = t('header');
-const qTitle = document.querySelector('.q-title');
-if(qTitle) qTitle.textContent = t('instruction');
-const actionButtons = document.querySelectorAll('.actions .btn');
-if(actionButtons[0]) actionButtons[0].childNodes[0].textContent = t('shuffle');
-if(actionButtons[1]) actionButtons[1].childNodes[0].textContent = t('showAnswer') + ' ';
-if(actionButtons[2]) actionButtons[2].textContent = t('grade');
-if(actionButtons[3]) actionButtons[3].textContent = uiLang === 'ja' ? 'English' : '日本語';
-if(actionButtons[4]) actionButtons[4].textContent = t('top');
-const statDivs = document.querySelectorAll('.stats > div');
-if(statDivs[0] && document.getElementById('progress')) statDivs[0].firstChild.textContent = t('problem') + ' ';
-if(statDivs[1] && document.getElementById('answered')) statDivs[1].firstChild.textContent = t('answered') + ' ';
-if(statDivs[2] && document.getElementById('score')) statDivs[2].firstChild.textContent = t('score') + ' ';
-const navBtns = document.querySelectorAll('.nav .btn');
-if(navBtns[0]) navBtns[0].textContent = t('prev');
-if(navBtns[1]) navBtns[1].textContent = t('list');
-if(navBtns[2]) navBtns[2].textContent = t('next');
-const badges = document.querySelectorAll('.footer .badge');
-if(badges[0]) badges[0].textContent = t('maid');
-if(badges[1]) badges[1].textContent = t('maker');
-const footerDivs = document.querySelectorAll('.footer > div');
-}
-
-let currentExam=null, order=[], current=0, userAnswers={}, showCorrect=false, graded=false;
-function initTop(){const grid=document.getElementById('examGrid');grid.innerHTML='';EXAMS.forEach((exam,idx)=>{const b=document.createElement('button');b.className='exam-btn';b.innerHTML=exam.title+''+exam.subtitle+'';b.onclick=()=>startExam(idx);grid.appendChild(b);});}
-function startExam(idx){currentExam=EXAMS[idx];order=currentExam.questions.map(q=>q.no);current=0;userAnswers={};showCorrect=false;graded=false;document.getElementById('answerToggle').textContent='OFF';document.getElementById('headerTitle').textContent=currentExam.title+' 練習アプリ';document.getElementById('top').classList.add('hidden');document.getElementById('app').classList.remove('hidden');render();}
-function backTop(){document.getElementById('app').classList.add('hidden');document.getElementById('top').classList.remove('hidden');document.getElementById('headerTitle').textContent=t('header');applyLang();}
-function getQ(){return currentExam.questions.find(q=>q.no===order[current]);}
-function render(){if(!currentExam)return;const q=getQ();document.getElementById('qNo').textContent=q.no;document.getElementById('qImage').src=q.image;document.getElementById('progress').textContent=(current+1)+' / '+currentExam.questions.length;const selected=userAnswers[q.no]||'';const box=document.getElementById('answers');box.className='answers '+currentExam.answerType;box.innerHTML='';currentExam.options.forEach(opt=>{const b=document.createElement('button');b.className='answer';if(selected===opt.value)b.classList.add(opt.value==='×'?'selected-x':(opt.value==='○'?'selected-o':'selected-'+opt.value));if((showCorrect||graded)&&q.answer&&q.answer===opt.value)b.classList.add('correct-reveal');const mark=opt.value==='○'?'○':(opt.value==='×'?'×':opt.value);
-if(currentExam.answerType==='mc3'||currentExam.answerType==='mc4'){
-b.innerHTML=''+mark+'';
-}else{
-let labelText = opt.label;
-let subText = opt.sub || '';
-if(currentExam.answerType==='tf'){
-if(opt.value==='○'){ labelText = t('trueLabel'); subText = uiLang==='ja' ? 'Tadashii' : 'True'; }
-if(opt.value==='×'){ labelText = t('falseLabel'); subText = uiLang==='ja' ? 'Ayamari' : 'False'; }
-}
-b.innerHTML=''+mark+''+labelText+(subText?''+subText+'':'')+'';
-}
-b.onclick=()=>selectAnswer(opt.value);box.appendChild(b);});const r=document.getElementById('result');r.textContent='';r.className='result';if((showCorrect||graded)&&!q.answer){r.textContent=(uiLang==='ja'?'この問題は正解未登録です':'Answer is not registered for this question.');}else if(showCorrect&&!graded&&q.answer){r.textContent=(uiLang==='ja'?'正解：':'Answer: ')+q.answer;}else if(graded&&selected&&q.answer){if(selected===q.answer){r.textContent=t('correct');r.className='result ok';}else{r.textContent=t('incorrect')+q.answer;r.className='result ng';}}updateStats();renderList();}
-function selectAnswer(ans){userAnswers[getQ().no]=ans;graded=false;render();}
-function updateStats(){const answered=Object.keys(userAnswers).length;let correct=0,registered=0;currentExam.questions.forEach(q=>{if(q.answer)registered++;if(q.answer&&userAnswers[q.no]===q.answer)correct++;});document.getElementById('answered').textContent=answered+' / '+currentExam.questions.length;document.getElementById('score').textContent=graded?(correct+' / '+registered):'-';}
-function nextQuestion(){if(current<order.length-1)current++;render();window.scrollTo({top:0,behavior:'smooth'});}
-function prevQuestion(){if(current>0)current--;render();window.scrollTo({top:0,behavior:'smooth'});}
-function gradeAll(){graded=true;showCorrect=true;document.getElementById('answerToggle').textContent='ON';render();}
-function toggleAnswer(){showCorrect=!showCorrect;document.getElementById('answerToggle').textContent=showCorrect?'ON':'OFF';render();}
-function shuffleQuestions(){if(!currentExam)return;for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}current=0;graded=false;render();}
-function toggleList(){document.getElementById('list').classList.toggle('hidden');}
-function renderList(){const list=document.getElementById('list');list.innerHTML='';order.forEach((no,idx)=>{const b=document.createElement('button');b.textContent='No.'+no;if(userAnswers[no])b.classList.add('done');b.onclick=()=>{current=idx;render();window.scrollTo({top:0,behavior:'smooth'});};list.appendChild(b);});}
-initTop();applyLang();
-
-
+</body>
+</html>
