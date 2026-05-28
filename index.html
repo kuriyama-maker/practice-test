@@ -119,7 +119,7 @@ cursor:pointer;font-weight:bold
 <section id="app" class="hidden"><div class="stats"><div>問題 <span id="progress">1 / 20</span></div><div>回答済み <span id="answered">0 / 20</span></div><div>正解数 <span id="score">-</span></div></div>
 <article class="card"><div class="q-head"><div class="q-no" id="qNo">1</div><div class="q-title">問題を読んで正しい答えを選択してください。</div></div><div class="green-line"></div><div class="image-wrap"><img class="question-image" id="qImage" alt="問題画像"></div><div class="answers" id="answers"></div><div class="result" id="result"></div></article>
 <div class="nav"><button class="btn" onclick="prevQuestion()">≪ 前の問題</button><button class="btn" onclick="toggleList()">一覧に戻る</button><button class="btn btn-primary" onclick="nextQuestion()">次の問題 ≫</button></div><div id="list" class="list hidden"></div></section>
-<footer class="footer"><footer class="footer">
+<footer class="footer">
   <div>
     <span class="badge">アプリ作成</span>
     <a href="https://www.kuriyama-truck.com/" target="_blank" rel="noopener noreferrer"
@@ -130,12 +130,23 @@ cursor:pointer;font-weight:bold
 
   <div>
     <span class="badge">学習動画</span>
-    <a href="https://www.youtube.com/watch?v=DjCNufcSb1M"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="color:#0b7d30;font-weight:700;text-decoration:none;">
-      自動車の仕組みを解説しているわかりやすいサイト（初級）
-    </a>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
+      <a href="https://www.youtube.com/watch?v=DjCNufcSb1M"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="color:#0b7d30;font-weight:700;text-decoration:none;">
+        ＞映像で見る自動車部品　～Auto Parts Visualized～
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=GIiWgfzJjFU"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="color:#0b7d30;font-weight:700;text-decoration:none;">
+        ＞車講座！世界一分かりやすい車の仕組みについて！
+      </a>
+
+    </div>
   </div>
 </footer>
 <script>
